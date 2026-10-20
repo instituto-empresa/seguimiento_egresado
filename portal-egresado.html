@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Encuesta Oficial de Seguimiento al Egresado | Instituto de la Empresa</title>
+  <meta name="description" content="Encuesta Oficial de Seguimiento y Satisfacción al Egresado del Instituto de la Empresa.">
+
+  <!-- Favicon Oficial IEmpresa -->
+  <link rel="icon" type="image/png" href="https://cdn.bitrix24.es/b15495391/landing/7a8/7a88860fb02485c824de9be805faee6d/ie_1x.png">
+  <link rel="shortcut icon" type="image/png" href="icono.png?v=2">
+  <link rel="apple-touch-icon" href="https://cdn.bitrix24.es/b15495391/landing/7a8/7a88860fb02485c824de9be805faee6d/ie_1x.png">
+
+  <!-- Bootstrap 5.3 & Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --neumann-navy: #0B2545;
+      --neumann-blue: #FF5A00;
+      --neumann-blue-hover: #e04f00;
+      --neumann-blue-light: #fff7ed;
+      --neumann-purple: #FF5A00;
+      --border-color: #e2e8f0;
+      --border-focus: #FF5A00;
+      --text-main: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-page);
+      background-image: 
+        radial-gradient(at 50% 0%, rgba(2, 132, 199, 0.05) 0px, transparent 50%),
+        radial-gradient(at 90% 20%, rgba(124, 58, 237, 0.03) 0px, transparent 40%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      margin: 0;
+      padding: 30px 16px 80px 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Contenedor Principal Flotante */
+    .portal-main-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 30px -5px rgba(9, 44, 76, 0.06), 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    /* Barra Superior Institucional */
+    .portal-brand-bar {
+      padding: 24px 32px 20px 32px;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      background: #ffffff;
+    }
+
+    .brand-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo-img {
+      height: 64px;
+      max-width: 280px;
+      object-fit: contain;
+    }
+
+    .brand-minedu-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    /* Hero de Bienvenida */
+    .portal-hero-section {
+      padding: 24px 32px 18px 32px;
+      background: #ffffff;
+    }
+
+    .portal-category-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0f9ff;
+      color: #0284c7;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .portal-hero-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--neumann-navy);
+      letter-spacing: -0.02em;
+      margin: 0 0 6px 0;
+      line-height: 1.3;
+    }
+
+    .portal-hero-sub {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Ficha de Identificación del Egresado */
+    .student-id-card {
+      margin: 16px 32px 0 32px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%);
+      border: 1px solid #e0f2fe;
+      border-left: 4px solid var(--neumann-blue);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+
+    .student-id-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .student-id-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .student-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.2);
+    }
+
+    .student-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .student-name {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--neumann-navy);
+    }
+
+    .student-dni-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0284c7;
+      margin-left: 6px;
+    }
+
+    .badge-padron {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #ecfdf5;
+      color: #059669;
+      border: 1px solid #a7f3d0;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 700;
+    }
+
+    .student-note {
+      font-size: 12.5px;
+      color: #475569;
+      margin: 10px 0 0 0;
+      line-height: 1.5;
+    }
+
+    /* Pestañas de Navegación / Stepper */
+    .stepper-nav-bar {
+      display: flex;
+      background: #ffffff;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
+      margin-top: 20px;
+      overflow-x: auto;
+    }
+
+    .stepper-tab-btn {
+      flex: 1;
+      min-width: 170px;
+      padding: 14px 12px;
+      text-align: center;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .stepper-tab-btn .step-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      color: #64748b;
+      font-size: 11px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .stepper-tab-btn:hover {
+      color: var(--neumann-navy);
+      background: #f8fafc;
+    }
+
+    .stepper-tab-btn.active {
+      color: #0284c7;
+      font-weight: 700;
+      border-bottom-color: #0284c7;
+      background: #f0f9ff;
+    }
+
+    .stepper-tab-btn.active .step-circle {
+      background: #0284c7;
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+    }
+
+    .stepper-tab-btn.completed {
+      color: #059669;
+    }
+
+    .stepper-tab-btn.completed .step-circle {
+      background: #ecfdf5;
+      color: #059669;
+      border: 1px solid #a7f3d0;
+    }
+
+    /* Barra de Progreso Dinámica */
+    .progress-track-wrapper {
+      background: #f1f5f9;
+      height: 4px;
+      width: 100%;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0284c7 0%, #0369a1 100%);
+      width: 25%;
+      transition: width 0.3s ease;
+    }
+
+    /* Contenido del Formulario */
+    .portal-form-body {
+      padding: 28px 32px 36px 32px;
+    }
+
+    .section-header-box {
+      margin-bottom: 22px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-icon-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #f0f9ff;
+      color: #0284c7;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .section-title-txt {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--neumann-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    /* Tarjetas de Pregunta */
+    .question-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .question-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .question-card:focus-within {
+      border-color: #0284c7;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+    }
+
+    .question-card.has-error {
+      border-color: #ef4444;
+      background: #fff5f5;
+    }
+
+    .question-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--neumann-navy);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      line-height: 1.4;
+    }
+
+    .required-star {
+      color: #dc2626;
+      font-weight: 800;
+      margin-left: 2px;
+    }
+
+    /* Inputs de Texto */
+    .input-neumann {
+      width: 100%;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13.5px;
+      color: var(--text-main);
+      background-color: #ffffff;
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .input-neumann:focus {
+      border-color: #0284c7;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+    }
+
+    /* Opciones de Radio Tile */
+    .option-radio-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: all 0.15s ease;
+      margin-bottom: 6px;
+    }
+
+    .option-radio-label:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+    }
+
+    .option-radio-label input[type="radio"] {
+      accent-color: #0284c7;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .option-radio-label.checked {
+      background: #f0f9ff;
+      border-color: #0284c7;
+      color: #0369a1;
+      font-weight: 600;
+    }
+
+    /* Escala NPS 1 a 10 */
+    .nps-scale-wrapper {
+      margin-top: 10px;
+    }
+
+    .nps-scale-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 4px 2px 8px 2px;
+    }
+
+    .nps-option {
+      flex: 1;
+      text-align: center;
+      min-width: 38px;
+    }
+
+    .nps-option input[type="radio"] {
+      display: none;
+    }
+
+    .nps-option label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 42px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: all 0.15s ease;
+      background: #ffffff;
+    }
+
+    .nps-option label:hover {
+      border-color: #0284c7;
+      background: #f0f9ff;
+    }
+
+    .nps-option input[type="radio"]:checked + label {
+      background: #0284c7;
+      color: white;
+      border-color: #0284c7;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+    }
+
+    .nps-labels-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      padding: 0 4px;
+    }
+
+    /* Botones de Navegación */
+    .nav-buttons-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .btn-step-prev {
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-step-prev:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    .btn-step-next {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      border: none;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 11px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      box-shadow: 0 3px 12px rgba(2, 132, 199, 0.25);
+    }
+
+    .btn-step-next:hover {
+      background: linear-gradient(135deg, #0369a1 0%, #0c4a6e 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+    }
+
+    .badge-points {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Pie Institucional */
+    .portal-footer {
+      background: #ffffff;
+      border-top: 1px solid #f1f5f9;
+      padding: 22px 32px;
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    /* Toast Flotante */
+    .toast-notification {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #092c4c;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      z-index: 9999;
+      display: none;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 12px 8px 40px 8px;
+      }
+      .portal-brand-bar, .portal-hero-section, .portal-form-body, .portal-footer {
+        padding: 18px 16px;
+      }
+      .student-id-card {
+        margin: 12px 16px 0 16px;
+      }
+      .portal-hero-title {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toast Mensajes -->
+  <div id="toast-msg" class="toast-notification"></div>
+
+  <!-- CONTENEDOR PRINCIPAL FLOTANTE -->
+  <div class="portal-main-wrapper">
+
+    <!-- 1. BARRA INSTITUCIONAL CON LOGO OFICIAL IEMPRESA -->
+    <header class="portal-brand-bar">
+      <div class="brand-logo-wrap">
+        <img src="https://cdn.bitrix24.es/b15495391/landing/7a8/7a88860fb02485c824de9be805faee6d/ie_1x.png" 
+             onerror="this.src='assets/LOGO-IEMPRESA.png'"
+             alt="Instituto de la Empresa" 
+             class="brand-logo-img">
+      </div>
+      <div class="brand-minedu-pill">
+        <i class="bi bi-shield-fill-check"></i>
+        <span>Plataforma Oficial de Seguimiento al Egresado</span>
+      </div>
+    </header>
+
+    <!-- 2. HERO DE BIENVENIDA -->
+    <div class="portal-hero-section">
+      <div class="portal-category-tag">
+        <i class="bi bi-mortarboard-fill"></i> Sistema Oficial de Egresados y Graduados
+      </div>
+      <h1 class="portal-hero-title">
+        Encuesta de Seguimiento y Satisfacción del Egresado
+      </h1>
+      <p class="portal-hero-sub">
+        Dirección de Relaciones Institucionales y Empleabilidad &bull; Convocatoria Oficial 2026
+      </p>
+    </div>
+
+    <!-- 3. FICHA DE IDENTIFICACIÓN DEL EGRESADO -->
+    <div class="student-id-card">
+      <div class="student-id-header">
+        <div class="student-id-left">
+          <div class="student-avatar">
+            <i class="bi bi-person-fill"></i>
+          </div>
+          <div>
+            <span class="student-tag">Egresado Identificado</span>
+            <span class="student-name" id="header-nombre-egresado">Cargando datos...</span>
+            <span class="student-dni-chip">
+              <i class="bi bi-person-vcard"></i> DNI: <span id="header-dni-egresado">...</span>
+            </span>
+          </div>
+        </div>
+        <div>
+          <span class="badge-padron">
+            <i class="bi bi-patch-check-fill"></i> Padrón Oficial 2026
+          </span>
+        </div>
+      </div>
+      <p class="student-note">
+        <i class="bi bi-info-circle text-primary me-1"></i> <strong>Estimado(a) Graduado(a):</strong> Tu opinión y trayectoria profesional son indispensables para el licenciamiento institucional y la mejora continua de nuestros programas. Tiempo estimado: 3 a 5 minutos.
+      </p>
+    </div>
+
+    <!-- 4. PESTAÑAS DE PASOS (STEPPER) -->
+    <div class="stepper-nav-bar">
+      <button type="button" class="stepper-tab-btn active" id="tab-step-1" onclick="cambiarPaso(1)">
+        <span class="step-circle">1</span> Información General
+      </button>
+      <button type="button" class="stepper-tab-btn" id="tab-step-2" onclick="validarYIrPaso(2)">
+        <span class="step-circle">2</span> Situación Laboral
+      </button>
+      <button type="button" class="stepper-tab-btn" id="tab-step-3" onclick="validarYIrPaso(3)">
+        <span class="step-circle">3</span> Satisfacción
+      </button>
+      <button type="button" class="stepper-tab-btn" id="tab-step-4" onclick="validarYIrPaso(4)">
+        <span class="step-circle">4</span> Referencias y Sugerencias
+      </button>
+    </div>
+    <div class="progress-track-wrapper">
+      <div class="progress-bar-fill" id="form-progress-bar"></div>
+    </div>
+
+    <!-- 5. CONTENIDO DEL FORMULARIO -->
+    <div class="portal-form-body">
+
+      <!-- VISTA DE CARGA -->
+      <div id="loading-view" style="text-align: center; padding: 40px 20px;">
+        <div class="spinner-border" role="status" style="color: var(--neumann-blue); width: 3rem; height: 3rem;">
+          <span class="visually-hidden">Cargando datos del egresado...</span>
+        </div>
+        <p style="margin-top: 14px; font-size: 13.5px; color: var(--text-muted); font-weight: 500;">
+          Verificando tu registro en el padrón institucional...
+        </p>
+      </div>
+
+      <!-- MODAL SOLICITUD DE DNI -->
+      <div id="modal-solicitar-dni" style="display: none; text-align: center; padding: 30px 20px;">
+        <div style="width: 56px; height: 56px; background: #e0f2fe; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px; color: #0284c7; font-size: 24px;">
+          <i class="bi bi-person-badge"></i>
+        </div>
+        <h3 style="font-size: 18px; font-weight: 800; color: var(--neumann-navy); margin-bottom: 8px;">
+          Validación de Egresado IEmpresa
+        </h3>
+        <p style="font-size: 13px; color: var(--text-muted); max-width: 440px; margin: 0 auto 20px;">
+          Ingresa tu DNI o tu correo electrónico (institucional o personal) para acceder a tu ficha.
+        </p>
+        <div style="max-width: 320px; margin: 0 auto 16px;">
+          <input type="text" id="manual-login-dni" class="input-neumann text-center" placeholder="Ingresa tu DNI o Correo" maxlength="100" style="font-size: 15px; font-weight: 600;">
+        </div>
+        <button type="button" class="btn-step-next" onclick="iniciarConDniManual()">
+          Continuar <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- FORMULARIO DE 4 PASOS -->
+      <form id="form-view" style="display: none;" onsubmit="guardarEncuestaEgresado(event)">
+
+        <!-- ========================================== -->
+        <!-- PASO 1: INFORMACIÓN GENERAL (Preguntas 1-8) -->
+        <!-- ========================================== -->
+        <div class="form-step-content" id="paso-1">
+          <div class="section-header-box">
+            <div class="section-icon-badge">
+              <i class="bi bi-person-lines-fill"></i>
+            </div>
+            <h2 class="section-title-txt">Sección 1: Información General y Contacto</h2>
+          </div>
+
+          <!-- 1. Correo electrónico personal -->
+          <div class="question-card" id="qcard-correo-personal">
+            <label class="question-title" for="input-correo-personal">
+              <span>1. Correo electrónico personal <span class="required-star">*</span></span>
+            </label>
+            <input type="email" id="input-correo-personal" class="input-neumann" placeholder="ejemplo@gmail.com" required>
+          </div>
+
+          <!-- 2. Nombres y Apellidos -->
+          <div class="question-card" id="qcard-nombres-apellidos">
+            <label class="question-title" for="input-nombres-apellidos">
+              <span>2. Nombres y Apellidos <span class="required-star">*</span></span>
+            </label>
+            <input type="text" id="input-nombres-apellidos" class="input-neumann" placeholder="Nombres y apellidos completos" required>
+          </div>
+
+          <!-- 3. Número de Celular -->
+          <div class="question-card" id="qcard-celular">
+            <label class="question-title" for="input-celular">
+              <span>3. Número de Celular / WhatsApp <span class="required-star">*</span></span>
+            </label>
+            <input type="tel" id="input-celular" class="input-neumann" placeholder="987654321" required>
+          </div>
+
+          <!-- 4. ¿Cuál es tu sexo? -->
+          <div class="question-card" id="qcard-sexo">
+            <div class="question-title">
+              <span>4. ¿Cuál es tu sexo? <span class="required-star">*</span></span>
+            </div>
+            <label class="option-radio-label">
+              <input type="radio" name="preg_sexo" value="Hombre" required>
+              <span>Hombre</span>
+            </label>
+            <label class="option-radio-label">
+              <input type="radio" name="preg_sexo" value="Mujer">
+              <span>Mujer</span>
+            </label>
+            <label class="option-radio-label">
+              <input type="radio" name="preg_sexo" value="Prefiero no contestar">
+              <span>Prefiero no contestar</span>
+            </label>
+          </div>
+
+          <!-- 5. Tu edad es: -->
+          <div class="question-card" id="qcard-edad">
+            <label class="question-title" for="input-edad">
+              <span>5. Tu edad es: <span class="required-star">*</span></span>
+            </label>
+            <input type="number" id="input-edad" class="input-neumann" placeholder="Ej: 27" min="16" max="99" required>
+          </div>
+
+          <!-- 6. Programa de Estudios (4 Carreras IEmpresa) -->
+          <div class="question-card" id="qcard-carrera">
+            <div class="question-title">
+              <span>6. Eres egresado del Programa de Estudios de: <span class="required-star">*</span></span>
+            </div>
+            <label class="option-radio-label">
+              <input type="radio" name="preg_carrera" value="Administración de Negocios Internacionales" required>
+              <span>Administración de Negocios Internacionales</span>
+            </label>
+            <label class="option-radio-label">
+              <input type="radio" name="preg_carrera" value="Contabilidad">
+              <span>Contabilidad</span>
+            </label>
+            <label class="option-radio-label">
+              <input type="radio" name="preg_carrera" value="Marketing">
+              <span>Marketing</span>
+            </label>
+            <label class="option-radio-label">
+              <input type="radio" name="preg_carrera" value="Desarrollo de Sistemas de Información">
+              <span>Desarrollo de Sistemas de Información</span>
+            </label>
+          </div>
+
+          <!-- 7. Tu año de egreso fue: -->
+          <div class="question-card" id="qcard-anio-egreso">
+            <div class="question-title">
+              <span>7. Tu año de egreso fue: <span class="required-star">*</span></span>
+            </div>
+            <label class="option-radio-label"><input type="radio" name="preg_anio_egreso" value="Entre 1993 - 1997" required><span>Entre 1993 - 1997</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_anio_egreso" value="Entre 1998 - 2002"><span>Entre 1998 - 2002</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_anio_egreso" value="Entre 2003 - 2007"><span>Entre 2003 - 2007</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_anio_egreso" value="Entre 2008 - 2012"><span>Entre 2008 - 2012</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_anio_egreso" value="Entre 2013 - 2017"><span>Entre 2013 - 2017</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_anio_egreso" value="Entre 2018 - 2022"><span>Entre 2018 - 2022</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_anio_egreso" value="Después del 2023"><span>Después del 2023</span></label>
+          </div>
+
+          <!-- 8. Grado de instrucción actual -->
+          <div class="question-card" id="qcard-grado-instruccion">
+            <div class="question-title">
+              <span>8. Tu grado de instrucción actual es: <span class="required-star">*</span></span>
+            </div>
+            <label class="option-radio-label"><input type="radio" name="preg_grado_instruccion" value="Profesional Técnico Egresado" required><span>Profesional Técnico Egresado</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_grado_instruccion" value="Profesional Técnico Titulado"><span>Profesional Técnico Titulado</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_grado_instruccion" value="Profesional Universitario Egresado"><span>Profesional Universitario Egresado</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_grado_instruccion" value="Profesional Universitario con grado de Bachiller"><span>Profesional Universitario con grado de Bachiller</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_grado_instruccion" value="Profesional Universitario Titulado"><span>Profesional Universitario Titulado</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_grado_instruccion" value="Egresado de Maestría"><span>Egresado de Maestría</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_grado_instruccion" value="Grado de Magíster"><span>Grado de Magíster</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_grado_instruccion" value="Egresado de Doctor"><span>Egresado de Doctor</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_grado_instruccion" value="Grado de Doctor"><span>Grado de Doctor</span></label>
+          </div>
+
+          <!-- Barra Navegación Paso 1 -->
+          <div class="nav-buttons-bar">
+            <div></div>
+            <button type="button" class="btn-step-next" onclick="validarYIrPaso(2)">
+              Siguiente: Situación Laboral <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- PASO 2: SITUACIÓN LABORAL (Preguntas 9-15)  -->
+        <!-- ========================================== -->
+        <div class="form-step-content" id="paso-2" style="display: none;">
+          <div class="section-header-box">
+            <div class="section-icon-badge">
+              <i class="bi bi-briefcase-fill"></i>
+            </div>
+            <h2 class="section-title-txt">Sección 2: Situación y Trayectoria Laboral</h2>
+          </div>
+
+          <!-- 9. Situación laboral actual -->
+          <div class="question-card" id="qcard-situacion-laboral">
+            <div class="question-title">
+              <span>9. ¿Cuál es tu situación laboral actual? <span class="required-star">*</span></span>
+            </div>
+            <label class="option-radio-label"><input type="radio" name="preg_situacion_laboral" value="Trabajador dependiente" required><span>Trabajador dependiente (en planilla o locación)</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_situacion_laboral" value="Trabajador independiente"><span>Trabajador independiente (honorarios / negocio propio)</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_situacion_laboral" value="Desempleado"><span>Desempleado (en búsqueda activa)</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_situacion_laboral" value="No busca trabajo"><span>No busca trabajo actualmente (estudios u otros proyectos)</span></label>
+          </div>
+
+          <!-- 10. Nivel dentro de la empresa -->
+          <div class="question-card" id="qcard-nivel-empresa">
+            <div class="question-title">
+              <span>10. Tu nivel dentro de la empresa es: <span class="required-star">*</span></span>
+            </div>
+            <label class="option-radio-label"><input type="radio" name="preg_nivel_empresa" value="Auxiliar / Asistente" required><span>Auxiliar / Asistente</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_nivel_empresa" value="Analista"><span>Analista</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_nivel_empresa" value="Coordinador"><span>Coordinador</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_nivel_empresa" value="Jefe de Área"><span>Jefe de Área</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_nivel_empresa" value="Gerente"><span>Gerente</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_nivel_empresa" value="Director"><span>Director</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_nivel_empresa" value="Otro"><span>Otro (especificar)</span></label>
+            <div id="wrapper-nivel-otro" style="display: none; margin-top: 10px; padding-left: 28px;">
+              <input type="text" id="input-nivel-otro" class="input-neumann" placeholder="Escribe tu nivel o cargo">
+            </div>
+          </div>
+
+          <!-- 11. Tiempo laborando -->
+          <div class="question-card" id="qcard-tiempo-laborando">
+            <div class="question-title">
+              <span>11. ¿Cuánto tiempo llevas laborando en la empresa actual? <span class="required-star">*</span></span>
+            </div>
+            <label class="option-radio-label"><input type="radio" name="preg_tiempo_laborando" value="Menos de 1 año" required><span>Menos de 1 año</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_tiempo_laborando" value="Mayor a 1 año - hasta 3 años"><span>Mayor a 1 año - hasta 3 años</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_tiempo_laborando" value="Mayor a 3 años - hasta 5 años"><span>Mayor a 3 años - hasta 5 años</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_tiempo_laborando" value="Más de 5 años"><span>Más de 5 años</span></label>
+          </div>
+
+          <!-- 12. Ascenso últimos 6 meses -->
+          <div class="question-card" id="qcard-ascenso">
+            <div class="question-title">
+              <span>12. ¿Has recibido algún ascenso en los últimos seis (6) meses en la empresa? <span class="required-star">*</span></span>
+            </div>
+            <label class="option-radio-label"><input type="radio" name="preg_ascenso" value="Sí" required><span>Sí</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_ascenso" value="No"><span>No</span></label>
+          </div>
+
+          <!-- 13. Tipo de empresa -->
+          <div class="question-card" id="qcard-tipo-empresa">
+            <div class="question-title">
+              <span>13. El tipo de empresa donde laboras es: <span class="required-star">*</span></span>
+            </div>
+            <label class="option-radio-label"><input type="radio" name="preg_tipo_empresa" value="Microempresa (hasta 10 trabajadores)" required><span>Microempresa (hasta 10 trabajadores)</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_tipo_empresa" value="Pequeña empresa (entre 11 y 100 trabajadores)"><span>Pequeña empresa (entre 11 y 100 trabajadores)</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_tipo_empresa" value="Gran y mediana empresa (más de 100 trabajadores)"><span>Gran y mediana empresa (más de 100 trabajadores)</span></label>
+          </div>
+
+          <!-- 14. Rubro de la empresa -->
+          <div class="question-card" id="qcard-rubro">
+            <div class="question-title">
+              <span>14. ¿A qué rubro pertenece la empresa en la que trabajas? <span class="required-star">*</span></span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 6px;">
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Público" required><span>Público</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Bancario"><span>Bancario</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Agronegocios"><span>Agronegocios</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Automotriz"><span>Automotriz</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Hotelero"><span>Hotelero</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Turismo"><span>Turismo</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Restaurantes"><span>Restaurantes</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Comercio Minorista"><span>Comercio Minorista</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Comercio Mayorista"><span>Comercio Mayorista</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Inmobiliario"><span>Inmobiliario</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Servicios de Asesoramiento Profesional (Freelancer)"><span>Servicios Profesionales / Freelance</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Educativo"><span>Educativo</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Comercio Internacional"><span>Comercio Internacional</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Textil y de confección"><span>Textil y de confección</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Industrial"><span>Industrial</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Salud"><span>Salud</span></label>
+              <label class="option-radio-label"><input type="radio" name="preg_rubro" value="Otra"><span>Otra</span></label>
+            </div>
+          </div>
+
+          <!-- 15. Ingresos promedio mensuales -->
+          <div class="question-card" id="qcard-ingresos">
+            <div class="question-title">
+              <span>15. Tus ingresos promedio mensuales son (en soles): <span class="required-star">*</span></span>
+            </div>
+            <label class="option-radio-label"><input type="radio" name="preg_ingresos" value="Menos de S/1025" required><span>Menos de S/ 1,025</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_ingresos" value="Entre S/1026 y S/1525"><span>Entre S/ 1,026 y S/ 1,525</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_ingresos" value="Entre S/1526 y S/2025"><span>Entre S/ 1,526 y S/ 2,025</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_ingresos" value="Entre S/2026 y S/2525"><span>Entre S/ 2,026 y S/ 2,525</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_ingresos" value="Entre S/2526 y S/3025"><span>Entre S/ 2,526 y S/ 3,025</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_ingresos" value="Entre S/3026 y S/3525"><span>Entre S/ 3,026 y S/ 3,525</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_ingresos" value="Entre S/3526 y S/4025"><span>Entre S/ 3,526 y S/ 4,025</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_ingresos" value="Más de S/4025"><span>Más de S/ 4,025</span></label>
+          </div>
+
+          <!-- Barra Navegación Paso 2 -->
+          <div class="nav-buttons-bar">
+            <button type="button" class="btn-step-prev" onclick="cambiarPaso(1)">
+              <i class="bi bi-arrow-left"></i> Anterior
+            </button>
+            <button type="button" class="btn-step-next" onclick="validarYIrPaso(3)">
+              Siguiente: Satisfacción <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- PASO 3: SATISFACCIÓN DEL EGRESADO (16-18)      -->
+        <!-- ============================================== -->
+        <div class="form-step-content" id="paso-3" style="display: none;">
+          <div class="section-header-box">
+            <div class="section-icon-badge">
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <h2 class="section-title-txt">Sección 3: Satisfacción y Recomendación Institucional</h2>
+          </div>
+
+          <!-- 16. Calificación de formación -->
+          <div class="question-card" id="qcard-formacion">
+            <div class="question-title">
+              <span>16. ¿Cómo calificarías la formación recibida por el Instituto de la Empresa? <span class="required-star">*</span></span>
+            </div>
+            <label class="option-radio-label"><input type="radio" name="preg_formacion" value="5" required><span>Excelente formación académica y práctica</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_formacion" value="4"><span>Buena formación</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_formacion" value="3"><span>Regular</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_formacion" value="2"><span>Mala</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_formacion" value="1"><span>Muy deficiente</span></label>
+          </div>
+
+          <!-- 17. Recomendación NPS 1 a 10 -->
+          <div class="question-card" id="qcard-nps">
+            <div class="question-title">
+              <span>17. ¿Recomendarías a tus amigos y familiares que estudien en el Instituto de la Empresa? <span class="required-star">*</span></span>
+            </div>
+            <div class="nps-scale-wrapper">
+              <div class="nps-scale-container">
+                <div class="nps-option"><input type="radio" name="preg_nps" id="nps-1" value="1" required><label for="nps-1">1</label></div>
+                <div class="nps-option"><input type="radio" name="preg_nps" id="nps-2" value="2"><label for="nps-2">2</label></div>
+                <div class="nps-option"><input type="radio" name="preg_nps" id="nps-3" value="3"><label for="nps-3">3</label></div>
+                <div class="nps-option"><input type="radio" name="preg_nps" id="nps-4" value="4"><label for="nps-4">4</label></div>
+                <div class="nps-option"><input type="radio" name="preg_nps" id="nps-5" value="5"><label for="nps-5">5</label></div>
+                <div class="nps-option"><input type="radio" name="preg_nps" id="nps-6" value="6"><label for="nps-6">6</label></div>
+                <div class="nps-option"><input type="radio" name="preg_nps" id="nps-7" value="7"><label for="nps-7">7</label></div>
+                <div class="nps-option"><input type="radio" name="preg_nps" id="nps-8" value="8"><label for="nps-8">8</label></div>
+                <div class="nps-option"><input type="radio" name="preg_nps" id="nps-9" value="9"><label for="nps-9">9</label></div>
+                <div class="nps-option"><input type="radio" name="preg_nps" id="nps-10" value="10"><label for="nps-10">10</label></div>
+              </div>
+              <div class="nps-labels-row">
+                <span><i class="bi bi-emoji-frown"></i> Totalmente en Desacuerdo (1)</span>
+                <span>Totalmente de Acuerdo (10) <i class="bi bi-emoji-smile"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 18. Promoción inserción laboral -->
+          <div class="question-card" id="qcard-insercion">
+            <div class="question-title">
+              <span>18. ¿En qué medida el Instituto de la Empresa promueve la inserción laboral de sus egresados? <span class="required-star">*</span></span>
+            </div>
+            <label class="option-radio-label"><input type="radio" name="preg_insercion" value="5" required><span>Muy satisfecho</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_insercion" value="4"><span>Satisfecho</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_insercion" value="3"><span>Ni satisfecho ni insatisfecho</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_insercion" value="2"><span>Insatisfecho</span></label>
+            <label class="option-radio-label"><input type="radio" name="preg_insercion" value="1"><span>Totalmente insatisfecho</span></label>
+          </div>
+
+          <!-- Barra Navegación Paso 3 -->
+          <div class="nav-buttons-bar">
+            <button type="button" class="btn-step-prev" onclick="cambiarPaso(2)">
+              <i class="bi bi-arrow-left"></i> Anterior
+            </button>
+            <button type="button" class="btn-step-next" onclick="validarYIrPaso(4)">
+              Siguiente: Adicionales y Red <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- PASO 4: PREGUNTAS ADICIONALES (19-20 + Sugerencias)-->
+        <!-- ============================================== -->
+        <div class="form-step-content" id="paso-4" style="display: none;">
+          <div class="section-header-box">
+            <div class="section-icon-badge">
+              <i class="bi bi-chat-left-text-fill"></i>
+            </div>
+            <h2 class="section-title-txt">Sección 4: Referencias Profesionales y Sugerencias</h2>
+          </div>
+
+          <!-- 19. Superior Inmediato: Nombre -->
+          <div class="question-card" id="qcard-jefe-nombre">
+            <label class="question-title" for="input-jefe-nombre">
+              <span>19. En el caso de que trabajes para una organización: ¿Cuál es el nombre de tu Superior Inmediato? <span class="required-star">*</span></span>
+            </label>
+            <input type="text" id="input-jefe-nombre" class="input-neumann" placeholder="Escribe el nombre o 'No aplica' si trabajas independiente o estás desempleado" required>
+          </div>
+
+          <!-- 20. Superior Inmediato: Correo -->
+          <div class="question-card" id="qcard-jefe-correo">
+            <label class="question-title" for="input-jefe-correo">
+              <span>20. En el caso de que trabajes para una organización: ¿Cuál es el correo de tu Superior Inmediato? <span class="required-star">*</span></span>
+            </label>
+            <input type="text" id="input-jefe-correo" class="input-neumann" placeholder="ejemplo@empresa.com o 'noaplica@iempresa.edu.pe'" required>
+          </div>
+
+          <!-- Sugerencias Adicionales (Opcional) -->
+          <div class="question-card">
+            <label class="question-title" for="input-sugerencias">
+              <span>Sugerencias para el Instituto de la Empresa <small class="text-muted fw-normal">(Opcional)</small></span>
+            </label>
+            <textarea id="input-sugerencias" class="input-neumann" rows="2" placeholder="¿Qué mejoras recomendarías en convenios, biblioteca, diplomados o bolsa de trabajo?"></textarea>
+          </div>
+
+          <!-- RED IEMPRESA: REFERIDOS Y PREMIOS (OCULTO) -->
+          <div class="question-card" style="display: none; background: linear-gradient(135deg, #f8fafc 0%, #fff7ed 100%); border: 1.5px dashed #fed7aa;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span class="badge-points"><i class="bi bi-gift-fill"></i> Campaña de Recompensas</span>
+              <span style="font-size: 12px; color: #c2410c; font-weight: 700;">+2 Puntos por cada compañero</span>
+            </div>
+            <h4 style="font-size: 13.5px; font-weight: 700; color: #0f172a; margin: 0 0 6px 0;">
+              ¿Conoces el contacto de otros compañeros de tu promoción?
+            </h4>
+            <p style="font-size: 12px; color: #475569; margin: 0 0 14px 0; line-height: 1.5;">
+              Ingresa sus datos para acumular puntos canjeables por <strong>Packs IEmpresa, Poleras IEmpresa, Polos Oficiales y Becas en Especializaciones</strong>.
+            </p>
+
+            <div id="contenedor-referidos">
+              <div class="row g-2 mb-2 ref-item">
+                <div class="col-7">
+                  <input type="text" class="input-neumann ref-nombre" placeholder="Nombre del compañero(a)">
+                </div>
+                <div class="col-5">
+                  <input type="tel" class="input-neumann ref-tel" placeholder="Celular / WhatsApp">
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn-step-prev" style="font-size: 12px; padding: 6px 14px; margin-top: 4px;" onclick="agregarFilaReferido()">
+              <i class="bi bi-plus-circle me-1"></i> Agregar otro compañero
+            </button>
+          </div>
+
+          <!-- Barra Navegación Paso 4 -->
+          <div class="nav-buttons-bar">
+            <button type="button" class="btn-step-prev" onclick="cambiarPaso(3)">
+              <i class="bi bi-arrow-left"></i> Anterior
+            </button>
+            <button type="submit" class="btn-step-next" id="btn-submit-ficha" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+              <i class="bi bi-send-check-fill"></i> Finalizar y Enviar Encuesta Oficial
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+
+    <!-- 6. PIE INSTITUCIONAL -->
+    <footer class="portal-footer">
+      <div style="font-weight: 700; color: var(--neumann-navy); margin-bottom: 4px;">
+        Instituto de la Empresa - IEmpresa
+      </div>
+      <div>
+        Dirección de Relaciones Institucionales y Empleabilidad &bull; reservas@iempresa.edu.pe
+      </div>
+      <div style="margin-top: 6px; font-size: 10.5px; color: #94a3b8;">
+        Tus datos son confidenciales y están protegidos conforme a la Ley N° 29733 de Protección de Datos Personales del Perú.
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Supabase JS Client & App Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    let egresadoActivo = null;
+    let pasoActual = 1;
+
+    // Toast
+    function mostrarToast(txt, tipo = 'purple') {
+      const t = document.getElementById('toast-msg');
+      t.textContent = txt;
+      t.style.display = 'block';
+      t.style.background = (tipo === 'danger' || tipo === 'warning') ? '#991b1b' : '#092c4c';
+      setTimeout(() => { t.style.display = 'none'; }, 3800);
+    }
+
+    // Inicialización al cargar la página
+    window.addEventListener('DOMContentLoaded', async () => {
+      // Setup dynamic handlers for radio styling
+      document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+          const name = this.name;
+          document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+            const p = r.closest('.option-radio-label');
+            if (p) p.classList.toggle('checked', r.checked);
+          });
+
+          // Caso especial 'Otro' en nivel empresa
+          if (name === 'preg_nivel_empresa') {
+            const wrap = document.getElementById('wrapper-nivel-otro');
+            if (wrap) wrap.style.display = (this.value === 'Otro') ? 'block' : 'none';
+          }
+        });
+      });
+
+      const params = new URLSearchParams(window.location.search);
+      const dni = params.get('dni') || params.get('id');
+
+      if (!dni) {
+        document.getElementById('loading-view').style.display = 'none';
+        document.getElementById('modal-solicitar-dni').style.display = 'block';
+        return;
+      }
+
+      await cargarDatosEgresado(dni);
+    });
+
+    async function iniciarConDniManual() {
+      const valor = document.getElementById('manual-login-dni').value.trim();
+      if (!valor || valor.length < 4) {
+        mostrarToast('Ingresa un número de DNI o correo válido.', 'warning');
+        return;
+      }
+      document.getElementById('modal-solicitar-dni').style.display = 'none';
+      document.getElementById('loading-view').style.display = 'block';
+
+      if (valor.includes('@')) {
+        // Buscar por correo en BD
+        await cargarEgresadosDesdeBD();
+        let eg = null;
+        if (window.egresadosData) {
+          eg = window.egresadosData.find(e => 
+            (e.correo && e.correo.toLowerCase() === valor.toLowerCase()) ||
+            (e.correo_alternativo && e.correo_alternativo.toLowerCase() === valor.toLowerCase())
+          );
+        }
+        if (!eg && supabaseClient) {
+          try {
+            const { data } = await supabaseClient.from('egresados')
+              .select('*')
+              .or(`correo.ilike.${valor.toLowerCase()},correo_alternativo.ilike.${valor.toLowerCase()}`)
+              .limit(1)
+              .maybeSingle();
+            if (data) eg = data;
+          } catch(e) {}
+        }
+        if (eg && eg.dni) {
+          await cargarDatosEgresado(eg.dni);
+        } else {
+          // No existe: nuevo con correo
+          egresadoActivo = {
+            dni: 'EGR-' + Math.floor(100000 + Math.random() * 900000),
+            nombres: '',
+            apellidos: '',
+            programa_estudios: 'Administración de Negocios Internacionales',
+            correo_alternativo: valor,
+            datos_actualizados: false
+          };
+          window.location.search = `?correo=${encodeURIComponent(valor)}&nuevo=1`;
+        }
+      } else {
+        await cargarDatosEgresado(valor);
+      }
+    }
+
+    async function cargarDatosEgresado(dni) {
+      try {
+        await cargarEgresadosDesdeBD();
+        egresadoActivo = await buscarEgresadoPorDni(dni);
+
+        if (!egresadoActivo && supabaseClient) {
+          const { data } = await supabaseClient.from('egresados').select('*').eq('dni', String(dni).trim()).maybeSingle();
+          if (data) egresadoActivo = data;
+        }
+
+        if (!egresadoActivo) {
+          egresadoActivo = {
+            dni: String(dni).trim(),
+            nombres: '',
+            apellidos: '',
+            programa_estudios: 'Administración de Negocios Internacionales',
+            correo_alternativo: '',
+            telefono: '',
+            esNuevo: true
+          };
+        }
+
+        // Llenar datos en UI
+        document.getElementById('header-nombre-egresado').textContent = `${egresadoActivo.nombres} ${egresadoActivo.apellidos}`.trim() || 'Egresado IEmpresa';
+        document.getElementById('header-dni-egresado').textContent = egresadoActivo.dni;
+
+        document.getElementById('input-nombres-apellidos').value = `${egresadoActivo.nombres} ${egresadoActivo.apellidos}`.trim();
+        document.getElementById('input-correo-personal').value = egresadoActivo.correo_alternativo || egresadoActivo.correo || '';
+        document.getElementById('input-celular').value = egresadoActivo.telefono || '';
+
+        // Precargar Carrera (4 Carreras)
+        const prog = (egresadoActivo.programa_estudios || '').toLowerCase();
+        let valCarrera = 'Administración de Negocios Internacionales';
+        if (prog.includes('contab')) {
+          valCarrera = 'Contabilidad';
+        } else if (prog.includes('market')) {
+          valCarrera = 'Marketing';
+        } else if (prog.includes('desarrollo') || prog.includes('sistema') || prog.includes('computac') || prog.includes('inform')) {
+          valCarrera = 'Desarrollo de Sistemas de Información';
+        }
+        const radCarrera = document.querySelector(`input[name="preg_carrera"][value="${valCarrera}"]`);
+        if (radCarrera) { radCarrera.checked = true; radCarrera.dispatchEvent(new Event('change')); }
+
+        // Precargar Grado de Instrucción
+        if (egresadoActivo.aprobo_titulacion) {
+          const radTit = document.querySelector('input[name="preg_grado_instruccion"][value="Profesional Técnico Titulado"]');
+          if (radTit) { radTit.checked = true; radTit.dispatchEvent(new Event('change')); }
+        } else {
+          const radEg = document.querySelector('input[name="preg_grado_instruccion"][value="Profesional Técnico Egresado"]');
+          if (radEg) { radEg.checked = true; radEg.dispatchEvent(new Event('change')); }
+        }
+
+        document.getElementById('loading-view').style.display = 'none';
+        document.getElementById('form-view').style.display = 'block';
+
+      } catch (err) {
+        console.error('Error al cargar datos:', err);
+        mostrarToast('Error al conectar con la base de datos.', 'danger');
+        document.getElementById('loading-view').style.display = 'none';
+        document.getElementById('form-view').style.display = 'block';
+      }
+    }
+
+    function cambiarPaso(paso) {
+      for (let i = 1; i <= 4; i++) {
+        const pasoEl = document.getElementById(`paso-${i}`);
+        if (pasoEl) pasoEl.style.display = (i === paso) ? 'block' : 'none';
+        const tab = document.getElementById(`tab-step-${i}`);
+        if (tab) {
+          tab.classList.toggle('active', i === paso);
+          if (i < paso) tab.classList.add('completed');
+          else tab.classList.remove('completed');
+        }
+      }
+      pasoActual = paso;
+      // Actualizar barra de progreso
+      const prog = document.getElementById('form-progress-bar');
+      if (prog) prog.style.width = `${paso * 25}%`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function validarYIrPaso(siguientePaso) {
+      // Limpiar errores visuales
+      document.querySelectorAll('.question-card').forEach(c => c.classList.remove('has-error'));
+
+      if (siguientePaso === 2) {
+        const email = document.getElementById('input-correo-personal').value.trim();
+        const nom = document.getElementById('input-nombres-apellidos').value.trim();
+        const cel = document.getElementById('input-celular').value.trim();
+        const sexo = document.querySelector('input[name="preg_sexo"]:checked');
+        const edad = document.getElementById('input-edad').value.trim();
+        const car = document.querySelector('input[name="preg_carrera"]:checked');
+        const anio = document.querySelector('input[name="preg_anio_egreso"]:checked');
+        const grad = document.querySelector('input[name="preg_grado_instruccion"]:checked');
+
+        let fallas = [];
+        if (!email || !email.includes('@')) { fallas.push('1. Correo personal válido'); document.getElementById('qcard-correo-personal').classList.add('has-error'); }
+        if (!nom) { fallas.push('2. Nombres y Apellidos'); document.getElementById('qcard-nombres-apellidos').classList.add('has-error'); }
+        if (!cel) { fallas.push('3. Número de celular'); document.getElementById('qcard-celular').classList.add('has-error'); }
+        if (!sexo) { fallas.push('4. Sexo'); document.getElementById('qcard-sexo').classList.add('has-error'); }
+        if (!edad) { fallas.push('5. Edad'); document.getElementById('qcard-edad').classList.add('has-error'); }
+        if (!car) { fallas.push('6. Programa de estudios'); document.getElementById('qcard-carrera').classList.add('has-error'); }
+        if (!anio) { fallas.push('7. Año de egreso'); document.getElementById('qcard-anio-egreso').classList.add('has-error'); }
+        if (!grad) { fallas.push('8. Grado de instrucción actual'); document.getElementById('qcard-grado-instruccion').classList.add('has-error'); }
+
+        if (fallas.length > 0) {
+          mostrarToast(`Por favor responde todas las preguntas obligatorias: ${fallas[0]}`, 'warning');
+          return;
+        }
+      } else if (siguientePaso === 3) {
+        const sit = document.querySelector('input[name="preg_situacion_laboral"]:checked');
+        const niv = document.querySelector('input[name="preg_nivel_empresa"]:checked');
+        const tmp = document.querySelector('input[name="preg_tiempo_laborando"]:checked');
+        const asc = document.querySelector('input[name="preg_ascenso"]:checked');
+        const tip = document.querySelector('input[name="preg_tipo_empresa"]:checked');
+        const rub = document.querySelector('input[name="preg_rubro"]:checked');
+        const ing = document.querySelector('input[name="preg_ingresos"]:checked');
+
+        let fallas = [];
+        if (!sit) { fallas.push('9. Situación laboral'); document.getElementById('qcard-situacion-laboral').classList.add('has-error'); }
+        if (!niv) { fallas.push('10. Nivel dentro de la empresa'); document.getElementById('qcard-nivel-empresa').classList.add('has-error'); }
+        if (!tmp) { fallas.push('11. Tiempo laborando'); document.getElementById('qcard-tiempo-laborando').classList.add('has-error'); }
+        if (!asc) { fallas.push('12. Ascenso recibido'); document.getElementById('qcard-ascenso').classList.add('has-error'); }
+        if (!tip) { fallas.push('13. Tipo de empresa'); document.getElementById('qcard-tipo-empresa').classList.add('has-error'); }
+        if (!rub) { fallas.push('14. Rubro de la empresa'); document.getElementById('qcard-rubro').classList.add('has-error'); }
+        if (!ing) { fallas.push('15. Ingresos promedio'); document.getElementById('qcard-ingresos').classList.add('has-error'); }
+
+        if (fallas.length > 0) {
+          mostrarToast(`Faltan responder preguntas obligatorias en la Sección 2: ${fallas[0]}`, 'warning');
+          return;
+        }
+      } else if (siguientePaso === 4) {
+        const form = document.querySelector('input[name="preg_formacion"]:checked');
+        const nps = document.querySelector('input[name="preg_nps"]:checked');
+        const ins = document.querySelector('input[name="preg_insercion"]:checked');
+
+        let fallas = [];
+        if (!form) { fallas.push('16. Calificación de formación'); document.getElementById('qcard-formacion').classList.add('has-error'); }
+        if (!nps) { fallas.push('17. Recomendación (escala 1 a 10)'); document.getElementById('qcard-nps').classList.add('has-error'); }
+        if (!ins) { fallas.push('18. Promoción inserción laboral'); document.getElementById('qcard-insercion').classList.add('has-error'); }
+
+        if (fallas.length > 0) {
+          mostrarToast(`Por favor califica las preguntas de la Sección 3: ${fallas[0]}`, 'warning');
+          return;
+        }
+      }
+
+      cambiarPaso(siguientePaso);
+    }
+
+    function agregarFilaReferido() {
+      const c = document.getElementById('contenedor-referidos');
+      const div = document.createElement('div');
+      div.className = 'row g-2 mb-2 ref-item';
+      div.innerHTML = `
+        <div class="col-7">
+          <input type="text" class="input-neumann ref-nombre" placeholder="Nombre completo del compañero(a)">
+        </div>
+        <div class="col-5">
+          <input type="tel" class="input-neumann ref-tel" placeholder="Celular / WhatsApp">
+        </div>
+      `;
+      c.appendChild(div);
+    }
+
+    // Guardar Encuesta Oficial
+    async function guardarEncuestaEgresado(e) {
+      e.preventDefault();
+      if (!egresadoActivo) return;
+
+      const jefeNom = document.getElementById('input-jefe-nombre').value.trim();
+      const jefeCor = document.getElementById('input-jefe-correo').value.trim();
+
+      if (!jefeNom || !jefeCor) {
+        if (!jefeNom) document.getElementById('qcard-jefe-nombre').classList.add('has-error');
+        if (!jefeCor) document.getElementById('qcard-jefe-correo').classList.add('has-error');
+        mostrarToast('Por favor completa las preguntas 19 y 20 (Superior Inmediato o "No aplica").', 'warning');
+        return;
+      }
+
+      const btnSubmit = document.getElementById('btn-submit-ficha');
+      btnSubmit.disabled = true;
+      btnSubmit.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Guardando encuesta oficial...';
+
+      mostrarToast('Enviando tu encuesta oficial a la base de datos...', 'purple');
+
+      // Recolección de Datos
+      const correoPersonal = document.getElementById('input-correo-personal').value.trim();
+      const nombresApellidos = document.getElementById('input-nombres-apellidos').value.trim();
+      const celular = document.getElementById('input-celular').value.trim();
+      const sexo = document.querySelector('input[name="preg_sexo"]:checked')?.value || 'No especificado';
+      const edad = parseInt(document.getElementById('input-edad').value) || null;
+      const carrera = document.querySelector('input[name="preg_carrera"]:checked')?.value || egresadoActivo.programa_estudios;
+      const anioEgresoRango = document.querySelector('input[name="preg_anio_egreso"]:checked')?.value || '';
+      const gradoInstruccion = document.querySelector('input[name="preg_grado_instruccion"]:checked')?.value || '';
+
+      const situacionLaboral = document.querySelector('input[name="preg_situacion_laboral"]:checked')?.value || '';
+      let nivelEmpresa = document.querySelector('input[name="preg_nivel_empresa"]:checked')?.value || '';
+      if (nivelEmpresa === 'Otro') {
+        const otroTxt = document.getElementById('input-nivel-otro').value.trim();
+        if (otroTxt) nivelEmpresa = `Otro: ${otroTxt}`;
+      }
+      const tiempoLaborando = document.querySelector('input[name="preg_tiempo_laborando"]:checked')?.value || '';
+      const recibioAscenso = document.querySelector('input[name="preg_ascenso"]:checked')?.value === 'Sí';
+      const tipoEmpresa = document.querySelector('input[name="preg_tipo_empresa"]:checked')?.value || '';
+      const rubro = document.querySelector('input[name="preg_rubro"]:checked')?.value || '';
+      const ingresos = document.querySelector('input[name="preg_ingresos"]:checked')?.value || '';
+
+      const formacion = parseInt(document.querySelector('input[name="preg_formacion"]:checked')?.value) || 5;
+      const nps = parseInt(document.querySelector('input[name="preg_nps"]:checked')?.value) || 10;
+      const insercion = parseInt(document.querySelector('input[name="preg_insercion"]:checked')?.value) || 5;
+      const sugerencias = document.getElementById('input-sugerencias').value.trim();
+
+      // Referidos
+      const nombresRef = document.querySelectorAll('.ref-nombre');
+      const telsRef = document.querySelectorAll('.ref-tel');
+      const referidos = [];
+      nombresRef.forEach((nEl, idx) => {
+        const n = nEl.value.trim();
+        const t = telsRef[idx] ? telsRef[idx].value.trim() : '';
+        if (n && t) referidos.push({ nombre: n, telefono: t });
+      });
+
+      try {
+        const partes = nombresApellidos.split(' ');
+        let nombres = nombresApellidos;
+        let apellidos = '';
+        if (partes.length >= 2) {
+          nombres = partes.slice(0, Math.ceil(partes.length / 2)).join(' ');
+          apellidos = partes.slice(Math.ceil(partes.length / 2)).join(' ');
+        }
+
+        // Si es nuevo en Supabase, darlo de alta
+        if (egresadoActivo.esNuevo || !egresadoActivo.id) {
+          if (supabaseClient) {
+            const { data: nuevo, error: errNew } = await supabaseClient
+              .from('egresados')
+              .insert({
+                dni: egresadoActivo.dni,
+                nombres: nombres,
+                apellidos: apellidos || '',
+                programa_estudios: carrera,
+                modalidad: 'Online',
+                correo: `${egresadoActivo.dni}@empresa.global`,
+                correo_alternativo: correoPersonal,
+                telefono: celular,
+                datos_actualizados: true,
+                estado_contacto: 'contactado_exitoso',
+                fecha_ultimo_contacto: new Date().toISOString()
+              })
+              .select()
+              .single();
+            if (errNew) throw errNew;
+            egresadoActivo.id = nuevo.id;
+          }
+        }
+
+        // Registrar en Supabase a través de registrarActualizacionEgresado
+        const res = await registrarActualizacionEgresado(
+          egresadoActivo.id,
+          {
+            correo_alternativo: correoPersonal,
+            telefono: celular,
+            usa_correo_institucional: true,
+            sexo: sexo,
+            edad: edad,
+            grado_instruccion: gradoInstruccion
+          },
+          {
+            situacion_laboral: situacionLaboral,
+            cargo: nivelEmpresa,
+            condicion_laboral: tiempoLaborando,
+            recibio_ascenso: recibioAscenso,
+            tipo_empresa: tipoEmpresa,
+            rubro_negocio: rubro,
+            rango_sueldo: ingresos,
+            jefe_nombre: jefeNom,
+            jefe_correo: jefeCor,
+            capturado_por: 'portal_web'
+          },
+          {
+            calificacion_formacion: formacion,
+            nps_recomendacion: nps,
+            promocion_insercion: insercion,
+            pertinencia_carrera: gradoInstruccion || carrera,
+            sugerencias_mejora: sugerencias
+          },
+          referidos
+        );
+
+        if (res.success) {
+          document.getElementById('form-view').innerHTML = `
+            <div style="text-align: center; padding: 48px 16px;">
+              <div style="width: 76px; height: 76px; background: #ecfdf5; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 20px; border: 2px solid #a7f3d0;">
+                <i class="bi bi-check-lg" style="font-size: 42px; color: #059669;"></i>
+              </div>
+              <h2 style="font-size: 22px; font-weight: 800; color: #064e3b; margin-bottom: 10px;">
+                ¡Encuesta Registrada Exitosamente!
+              </h2>
+              <p style="font-size: 14px; color: #475569; max-width: 520px; margin: 0 auto 24px; line-height: 1.6;">
+                Muchas gracias, <strong>${nombresApellidos}</strong>. Tus respuestas oficiales han sido registradas y tus datos sincronizados con el sistema institucional del <strong>Instituto de la Empresa</strong>.
+              </p>
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px 24px; max-width: 460px; margin: 0 auto 28px; text-align: left; font-size: 12.5px; color: #475569;">
+                <div><i class="bi bi-patch-check-fill text-success me-2"></i> Estado: <strong>Ficha Actualizada 2026</strong></div>
+                <div class="mt-2"><i class="bi bi-calendar-check me-2"></i> Fecha: <strong>${new Date().toLocaleDateString('es-PE', { day: '2-digit', month: 'long', year: 'numeric' })}</strong></div>
+              </div>
+              <a href="index.html" class="btn-step-next" style="text-decoration: none; display: inline-block;">
+                <i class="bi bi-house-door-fill me-1"></i> Volver al Portal de Inicio
+              </a>
+            </div>
+          `;
+        } else {
+          throw new Error(res.error || 'Error al guardar');
+        }
+
+      } catch (err) {
+        console.error('Error al guardar encuesta:', err);
+        mostrarToast(`Hubo un error al registrar: ${err.message}`, 'danger');
+        btnSubmit.disabled = false;
+        btnSubmit.innerHTML = '<i class="bi bi-send-fill me-1"></i> Enviar Encuesta Oficial';
+      }
+    }
+  </script>
+</body>
+</html>
